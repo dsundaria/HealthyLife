@@ -1,13 +1,34 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Umbraco.Web;
+@{ 
+    var site = Model.Content.Site();
+    var selection = site.Children.ToList();
+}
+
 <div id="header">
 	<div>
-		<a href="index.html"><img src="images/logo.gif" alt="Logo" /></a>
+		<a href="@site.Url"><img src="/images/logo.gif" alt="Logo" /></a>
 	</div>
 	<ul>
-		<li class="first current"><a href="index.html">Home</a></li>
-		<li><a href="recipes.html">Recipes</a></li>
-		<li><a href="about.html">About us</a></li>
-		<li><a href="blog.html">Blog</a></li>
-		<li class="last"><a href="contact.html">Contact Us</a></li>
-	</ul>
+<li class="first @(site.IsAncestorOrSelf(Model.Content) ? "current" : null)"><a href="@site.Url">@site.Name</a></li>
+
+@{int count=0;}
+@foreach (var item in selection)
+{
+    string lastClass=string.Empty;
+    count++;
+    
+    if(count==4)
+    {   
+        lastClass= "last";
+    }
+    
+    <li class="@(item.IsAncestorOrSelf(Model.Content) ? "selected" : null) @lastClass"><a href="@item.Url">@item.Name</a></li>
+    if(count==4)
+    {
+         break;
+    }
+    
+}
+</ul>
 </div>
