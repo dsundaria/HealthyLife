@@ -1,12 +1,11 @@
-﻿
-@using ContentModels = Umbraco.Web.PublishedContentModels;
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-    Layout = "Master.cshtml";
-    var umbraco = new UmbracoHelper(UmbracoContext.Current);
+	Layout = "Master.cshtml";
+ var umbraco = new UmbracoHelper(UmbracoContext.Current);
 }
+
 <div id="content">
 </div>
-
 <div id="footer">
     <div>
         <div>

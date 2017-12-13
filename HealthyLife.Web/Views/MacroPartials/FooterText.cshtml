@@ -1,3 +1,12 @@
 ﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
 
-@CurrentPage.GetProperty("Content") 
+@{
+    var Content = Model.MacroParameters["Content"] != null ? Model.MacroParameters["Content"] : Model.Content.Id;
+
+    var footerText = @Umbraco.TypedContent(Content);
+
+    <p class="footnote">
+        @Html.Raw(footerText["FooterText"]);
+    </p>
+
+}

@@ -1,0 +1,23 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+
+@{
+    var Content = Model.MacroParameters["Content"] != null ? Model.MacroParameters["Content"] : Model.Content.Id;
+
+    var preFooter = @Umbraco.TypedContent(Content);
+
+    //Model.GetPropertyValue<@Umbraco.Web.Models.RelatedLinks>(preFooter["Address"]);
+
+    <div>
+        <div class="first">
+            @Html.Raw(preFooter["NewsletterText"])
+        </div>
+        <div>
+            @Html.Raw(preFooter["Address"])
+        </div>
+        <div>
+            @Html.Raw(preFooter["SocialLink"])
+        </div>
+    </div>
+}

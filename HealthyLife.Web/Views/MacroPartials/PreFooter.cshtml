@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+@{
+    var umbraco = new UmbracoHelper(UmbracoContext.Current);
+
+    var Content = Model.MacroParameters["Content"] != null ? Model.MacroParameters["Content"] : Model.Content.Id;
+
+    var site = Model.Content;
+   
+    if (site.Id == 1073)
+    {
+        @Html.Partial("~/Views/Partials/FooterTeaser.cshtml");
+    }
+    else
+    {
+        @Html.Partial("~/Views/Partials/PreFooter.cshtml");
+    }
+
+    @umbraco.RenderMacro("FooterText", new { Content = "umb://document/12bf028b7c34435290d80b6607bf89c9" })
+
+}

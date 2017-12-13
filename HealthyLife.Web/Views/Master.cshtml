@@ -2,7 +2,7 @@
 
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = null;
+    Layout = null;
     var umbraco = new UmbracoHelper(UmbracoContext.Current);
 }
 
@@ -11,24 +11,25 @@
 <!-- Website template by freewebsitetemplates.com -->
 <html>
 <head>
-	<meta charset="UTF-8" />
-	<title>Home - HealthyLife</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
-	<!--[if IE 9]>
-		<link rel="stylesheet" type="text/css" href="/css/ie9.css" />
-	<![endif]-->
-	<!--[if IE 7]>
-		<link rel="stylesheet" type="text/css" href="/css/ie7.css" />
-	<![endif]-->
-	<!--[if IE 6]>
-		<link rel="stylesheet" type="text/css" href="/css/ie6.css" />
-	<![endif]-->
+    <meta charset="UTF-8" />
+    <title>Home - HealthyLife</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <!--[if IE 9]>
+        <link rel="stylesheet" type="text/css" href="/css/ie9.css" />
+    <![endif]-->
+    <!--[if IE 7]>
+        <link rel="stylesheet" type="text/css" href="/css/ie7.css" />
+    <![endif]-->
+    <!--[if IE 6]>
+        <link rel="stylesheet" type="text/css" href="/css/ie6.css" />
+    <![endif]-->
 </head>
 <body>
-	<div id="page">
-	    @Html.Partial("~/Views/Partials/Header.cshtml")
-	    @RenderBody()
-	    @umbraco.RenderMacro("FooterText", new {Content="umb://document/12bf028b7c34435290d80b6607bf89c9"})
+    <div id="page">
+        @Html.Partial("~/Views/Partials/Header.cshtml")
+       
+            @RenderBody()
+        
     </div>
 </body>
 </html>

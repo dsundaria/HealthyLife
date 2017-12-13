@@ -377,8 +377,16 @@
     <Content Include="Views\TeaserText.cshtml" />
     <Content Include="Views\About.cshtml" />
     <Content Include="Views\Master.cshtml" />
-    <Content Include="Views\Partials\Header.cshtml" />
+    <Content Include="Views\MacroPartials\FooterText.cshtml" />
+    <Content Include="Views\MacroPartials\HeroImage.cshtml" />
+    <Content Include="Views\MacroPartials\PreFooter.cshtml" />
     <Content Include="Views\Partials\Footer.cshtml" />
+    <Content Include="Views\Partials\Header.cshtml" />
+    <Content Include="Views\ContactUs1.cshtml" />
+    <Content Include="Views\Blog.cshtml" />
+    <Content Include="Views\Recipes.cshtml" />
+    <Content Include="Views\Partials\FooterTeaser.cshtml" />
+    <Content Include="Views\Partials\PreFooter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
