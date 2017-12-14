@@ -1,0 +1,32 @@
+﻿
+@model List<HealthyLife.Web.Models.Article>
+
+<div>
+
+    @if (Model != null && Model.Any())
+    {
+        <ul>
+            @foreach (var article in Model)
+            {
+                <li>
+                    <span id="date">@article.ArticleDate.ToString("MMM dd")</span>
+                    <span class="connect">
+                        <a href="http://twitter.com/#" target="_blank" class="twitter">Twitter</a>
+                        <a href="#" target="_blank" class="heart">Heart</a>
+                        <a href="http://facebook.com/#" target="_blank" class="facebook">Facebook</a>
+                    </span>
+                    <h1>
+                        @article.ArticleTitle
+                    </h1>
+                    @Html.Raw(article.ArticleContent)
+                </li>
+            }
+        </ul>
+    }
+
+    @*<div class="section">
+        <a href="index.html" class="newerpost">Newer Post</a>
+        <a href="index.html">Home</a>
+        <a href="index.html" class="olderpost">Older Post</a>
+    </div>*@
+</div>

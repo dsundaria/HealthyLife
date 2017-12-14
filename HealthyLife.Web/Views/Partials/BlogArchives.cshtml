@@ -1,0 +1,52 @@
+﻿
+@model List<IPublishedContent>
+
+@{
+    var currentYearArticles = Model.Where(x => x.GetPropertyValue<DateTime>("articleDate").Year == DateTime.Now.Year);
+    var prev1YearArticles = Model.Where(x => x.GetPropertyValue<DateTime>("articleDate").Year == DateTime.Now.Year - 1);
+    var prev2YearArticles = Model.Where(x => x.GetPropertyValue<DateTime>("articleDate").Year == DateTime.Now.Year - 2);
+    var currentYearArticleCount = currentYearArticles.Count();
+    var prev1YearArticlesCount = prev1YearArticles.Count();
+    var prev2YearArticlesCount = prev2YearArticles.Count();
+}
+
+<h3>@DateTime.Now.Year <span>(@currentYearArticleCount)</span></h3>
+<div>
+
+    @for (int month = 0; month < DateTime.Now.Month; month++)
+    {
+        var monthName = DateTime.Now.AddMonths(-month).ToString("MMMM");
+        var yearArticles = Model.Count(x => x.GetPropertyValue<DateTime>("articleDate").Month == DateTime.Now.AddMonths(-month).Month);
+
+        <p>@monthName <span>(@yearArticles)</span></p>
+
+    }
+
+</div>
+<h3>@(DateTime.Now.Year - 1) <span>(@prev1YearArticlesCount)</span></h3>
+<div style="display:none">
+
+    @for (int month = 12; month >= 1; month--)
+    {
+        var monthName = DateTime.MinValue.AddMonths(month - 1).ToString("MMMM");
+        var yearArticles = prev1YearArticles.Count(x => x.GetPropertyValue<DateTime>("articleDate").Month == month);
+
+        <p>@monthName <span>(@yearArticles)</span></p>
+
+    }
+
+</div>
+<h3>@(DateTime.Now.Year - 2) <span>(@prev2YearArticlesCount)</span></h3>
+
+<div style="display:none">
+
+    @for (int month = 12; month >= 1; month--)
+    {
+        var monthName = DateTime.MinValue.AddMonths(month - 1).ToString("MMMM");
+        var yearArticles = prev2YearArticles.Count(x => x.GetPropertyValue<DateTime>("articleDate").Month == month);
+
+        <p>@monthName <span>(@yearArticles)</span></p>
+
+    }
+
+</div>

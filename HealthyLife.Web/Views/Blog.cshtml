@@ -5,6 +5,14 @@
 }
 
 <div id="content">
+    <div id="blog">
+        @Html.Partial("/Views/Partials/BlogNavigation.cshtml")
+
+
+
+        @Html.Action("GetLatestBlogs", "Blog")
+
+    </div>
 </div>
 <div id="footer">
     <div>
