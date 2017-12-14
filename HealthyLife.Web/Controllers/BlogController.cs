@@ -27,13 +27,13 @@ namespace HealthyLife.Web.Controllers
                     article.GetPropertyValue<DateTime>("articleDate")));
             }
             
-            return PartialView("/Views/Partials/BlogContent.cshtml", articles);
+            return PartialView("/Views/Partials/Blogs/BlogContent.cshtml", articles.Take(2).ToList());
         }
 
         public ActionResult GetBlogArchives()
         {
             var allArticles = CurrentPage.Children;
-            return PartialView("/Views/Partials/BlogArchives.cshtml", allArticles);
+            return PartialView("/Views/Partials/Blogs/BlogArchives.cshtml", allArticles);
         }
     }
 }

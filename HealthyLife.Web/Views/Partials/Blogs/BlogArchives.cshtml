@@ -16,7 +16,7 @@
     @for (int month = 0; month < DateTime.Now.Month; month++)
     {
         var monthName = DateTime.Now.AddMonths(-month).ToString("MMMM");
-        var yearArticles = Model.Count(x => x.GetPropertyValue<DateTime>("articleDate").Month == DateTime.Now.AddMonths(-month).Month);
+        var yearArticles = currentYearArticles.Count(x => x.GetPropertyValue<DateTime>("articleDate").Month == DateTime.Now.AddMonths(-month).Month);
 
         <p>@monthName <span>(@yearArticles)</span></p>
 
