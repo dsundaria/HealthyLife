@@ -1,16 +1,35 @@
 ﻿@using ContentModels = Umbraco.Web.PublishedContentModels;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Umbraco.Web;
 @{
-	Layout = "Master.cshtml";
-	var umbraco = new UmbracoHelper(UmbracoContext.Current);
+    Layout = "Master.cshtml";
+    var umbraco = new UmbracoHelper(UmbracoContext.Current);
 }
 
 <div id="content">
+    <span class="background"></span>
+
+    @{
+        var currentSite = Model.Content;
+        var umbHelper = new UmbracoHelper(UmbracoContext.Current);
+        var content = umbHelper.Media(currentSite["Image"]);
+        var imagerUrl = content.Url;
+        <div id="home">
+
+            @umbraco.RenderMacro("ImagegalleryLeft", new {Content="umb://document/8f63c4dc8b434971aa7534ddd8fec18d"})
+            <div>
+                <a href="index.html"><img src="@currentSite["Image"]@imagerUrl @Umbraco.Media(currentSite["Image"]).Url" alt="Image"></a>
+                <a href="index.html"><img src="images/strawberry-pastry.jpg" alt="Image"></a>
+                <h1><a href="index.html"> <br>@currentSite["Title"]</a></h1>
+                <p>@currentSite["Text"]</p>
+            </div>
+        </div>
+    }
 </div>
 <div id="footer">
     <div>
         <div>
-            @umbraco.RenderMacro("PreFooter", new {Content="umb://document/78e90841db9b4e6da67f04f9fe03532d"})
+            @umbraco.RenderMacro("PreFooter", new { Content = "umb://document/78e90841db9b4e6da67f04f9fe03532d" })
         </div>
     </div>
 </div>
-

@@ -1,0 +1,25 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using Umbraco.Web.Models;
+@using Umbraco.Web;
+
+@{
+    var Content = Model.MacroParameters["Content"] != null ? Model.MacroParameters["Content"] : Model.Content.Id;
+    var teaserNode = @Umbraco.TypedContent(Content);
+}
+@if (teaserNode != null && teaserNode.Children.Count() > 0)
+{
+    var flag = true;
+    <ul>
+        @foreach (var item in teaserNode.Children)
+        {
+
+            var clastext = flag == true ? "first" : "";
+            <li class="@clastext">
+                <a href="index.html"><img src="images/vegetables.jpg" alt="Image"></a>
+                <p>@item["Title"]</p>
+            </li>
+            flag = false;
+        }
+
+    </ul>
+}
